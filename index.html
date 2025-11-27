@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaMar - Poissonnerie Premium</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="#accueil" class="nav-link">Accueil</a>
+                <a href="#produits" class="nav-link">Produits</a>
+                <a href="#commandes" class="nav-link">Commandes</a>
+            </div>
+            <div class="nav-center">
+                <h1 class="logo">AquaMar</h1>
+            </div>
+            <div class="nav-right">
+                <a href="#contact" class="nav-link">Contact</a>
+                <button class="cart-btn" onclick="toggleCart()">
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2 class="hero-title">AquaMar est votre partenaire de confiance pour les produits de la mer les plus frais</h2>
+            <p class="hero-subtitle">Découvrez notre sélection premium de poissons et fruits de mer, livrés directement de nos côtes à votre table.</p>
+            <button class="cta-button" onclick="scrollToSection('produits')">Découvrir nos produits</button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Nos engagements principaux</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-number">1</div>
+                    <h3>Fraîcheur garantie</h3>
+                    <p>Accompagner nos clients avec des produits de la mer d'une fraîcheur exceptionnelle, pêchés quotidiennement.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-number">2</div>
+                    <h3>Livraison rapide</h3>
+                    <p>Valoriser l'innovation au travers de nos processus de livraison ultra-rapide et de notre système de conservation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="produits">
+        <div class="container">
+            <h2 class="section-title">Allier qualité, fraîcheur et excellence</h2>
+            <div class="product-hero">
+                <img src="/placeholder.svg?height=400&width=800" alt="Étalage de poissons frais" class="product-hero-image">
+            </div>
+            <p class="product-description">
+                AquaMar se veut acteur de la transition vers une consommation responsable dans le domaine des produits de la mer. Nous proposons des solutions durables au service des gourmets du quotidien.
+            </p>
+            
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="approach">
+        <div class="container">
+            <h2 class="section-title">Une approche globale pour un modèle d'avenir</h2>
+            <div class="approach-grid">
+                <div class="approach-item">
+                    <img src="/placeholder.svg?height=300&width=300" alt="Pêche durable" class="approach-image">
+                    <h3>Pêche responsable</h3>
+                    <p>Partenariat avec des pêcheurs locaux respectueux de l'environnement marin.</p>
+                </div>
+                <div class="approach-item">
+                    <img src="/placeholder.svg?height=300&width=300" alt="Contrôle qualité" class="approach-image">
+                    <h3>Contrôle qualité</h3>
+                    <p>Processus rigoureux de sélection et de contrôle de nos produits.</p>
+                </div>
+                <div class="approach-item">
+                    <img src="/placeholder.svg?height=300&width=300" alt="Conservation optimale" class="approach-image">
+                    <h3>Conservation optimale</h3>
+                    <p>Techniques de conservation avancées pour préserver la fraîcheur.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Parlons de votre commande</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nom complet</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Décrivez vos besoins..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Envoyer la demande</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Informations de contact</h3>
+                    <div class="contact-item">
+                        <strong>Adresse:</strong>
+                        <p>123 Quai des Pêcheurs<br>29200 Brest, France</p>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Téléphone:</strong>
+                        <p>+33 2 98 XX XX XX</p>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Email:</strong>
+                        <p>contact@aquamar.fr</p>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Horaires:</strong>
+                        <p>Lun-Sam: 6h00 - 19h00<br>Dimanche: 8h00 - 13h00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Orders Section -->
+    <section class="orders" id="commandes">
+        <div class="container">
+            <h2 class="section-title">Gestion des commandes</h2>
+            <div class="orders-content">
+                <div class="order-form">
+                    <h3>Nouvelle commande</h3>
+                    <form id="orderForm">
+                        <div class="form-group">
+                            <label for="customerName">Nom du client</label>
+                            <input type="text" id="customerName" name="customerName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerEmail">Email du client</label>
+                            <input type="email" id="customerEmail" name="customerEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="deliveryDate">Date de livraison souhaitée</label>
+                            <input type="date" id="deliveryDate" name="deliveryDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="orderNotes">Notes spéciales</label>
+                            <textarea id="orderNotes" name="orderNotes" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Créer la commande</button>
+                    </form>
+                </div>
+                <div class="orders-list">
+                    <h3>Commandes récentes</h3>
+                    <div id="ordersList">
+                        <!-- Orders will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Panier</h3>
+            <button class="close-cart" onclick="toggleCart()">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: <span id="cartTotal">0.00€</span></strong>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Commander</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AquaMar</h3>
+                    <p>Votre poissonnerie de confiance depuis 1985</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#produits">Produits</a></li>
+                        <li><a href="#commandes">Commandes</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>123 Quai des Pêcheurs<br>29200 Brest, France</p>
+                    <p>+33 2 98 XX XX XX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AquaMar. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
