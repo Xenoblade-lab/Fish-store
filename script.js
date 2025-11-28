@@ -1,384 +1,382 @@
-// Global variables
-let cart = []
-let orders = []
+// Products Data
 const products = [
-  {
-    id: 1,
-    name: "Saumon Atlantique",
-    description: "Saumon frais de l'Atlantique, pêché du jour",
-    price: 24.9,
-    image: "/fresh-atlantic-salmon-fillet.jpg",
-    category: "poisson",
-  },
-  {
-    id: 2,
-    name: "Dorade Royale",
-    description: "Dorade royale entière, idéale pour les grillades",
-    price: 18.5,
-    image: "/fresh-sea-bream-fish.jpg",
-    category: "poisson",
-  },
-  {
-    id: 3,
-    name: "Crevettes Roses",
-    description: "Crevettes roses fraîches, calibre moyen",
-    price: 32.0,
-    image: "/fresh-pink-shrimp-prawns.jpg",
-    category: "crustace",
-  },
-  {
-    id: 4,
-    name: "Sole de Bretagne",
-    description: "Sole fraîche de nos côtes bretonnes",
-    price: 45.0,
-    image: "/fresh-sole-fish-from-brittany.jpg",
-    category: "poisson",
-  },
-  {
-    id: 5,
-    name: "Huîtres Spéciales",
-    description: "Huîtres spéciales n°3, élevage traditionnel",
-    price: 28.0,
-    image: "/fresh-oysters-on-ice.jpg",
-    category: "coquillage",
-  },
-  {
-    id: 6,
-    name: "Homard Bleu",
-    description: "Homard bleu vivant, pêche locale",
-    price: 65.0,
-    image: "/fresh-blue-lobster.jpg",
-    category: "crustace",
-  },
-]
+    {
+        id: 1,
+        name: "Saumon Atlantique",
+        category: "poisson",
+        price: 2400.90,
+        description: "Saumon frais de l'Atlantique, qualité premium",
+        image: "public/WhatsApp Image 2025-11-27 à 21.26.18_0bcf79af.jpg",
+        featured: true
+    },
+    {
+        id: 2,
+        name: "Thon Albacore",
+        category: "poisson",
+        price: 3200.50,
+        description: "Thon albacore frais, idéal pour tataki",
+        image: "public/WhatsApp Image 2025-11-27 à 21.26.19_9f9a501e.jpg",
+        featured: true
+    },
+    {
+        id: 3,
+        name: "Dorade Royale",
+        category: "poisson",
+        price: 1800.90,
+        description: "Dorade royale de Méditerranée",
+        image: "public/WhatsApp Image 2025-11-27 à 21.26.20_3ea55906.jpg",
+        featured: false
+    },
+    {
+        id: 4,
+        name: "Homard Breton",
+        category: "crustaces",
+        price: 4500.00,
+        description: "Homard breton vivant, 500g",
+        image: "public/crustatt 2025-11-27 à 21.36.10_cf7ad906.jpg",
+        featured: true
+    },
+    {
+        id: 5,
+        name: "Crevettes Roses",
+        category: "crustaces",
+        price: 2800.90,
+        description: "Crevettes roses sauvages",
+        image: "public/rose 2025-11-27 à 21.36.09_588f2065.jpg",
+        featured: false
+    },
+    {
+        id: 6,
+        name: "Tourteau",
+        category: "crustaces",
+        price: 2200.50,
+        description: "Tourteau cuit, 1kg",
+        image: "public/caraImage 2025-11-27 à 21.36.10_be0e74cf.jpg",
+        featured: false
+    },
+    {
+        id: 7,
+        name: "Huîtres Spéciales",
+        category: "coquillages",
+        price: 1500.90,
+        description: "Douzaine d'huîtres spéciales n°3",
+        image: "public/WhatsApp Image 2025-11-27 à 21.36.11_8c547de6.jpg",
+        featured: true
+    },
+    {
+        id: 8,
+        name: "Moules de Bouchot",
+        category: "coquillages",
+        price: 8000.50,
+        description: "Moules de bouchot AOP, 1kg",
+        image: "public/WhatsApp Image 2025-11-27 à 22.21.56_09ac33bb.jpg",
+        featured: false
+    },
+    {
+        id: 9,
+        name: "Saint-Jacques",
+        category: "coquillages",
+        price: 3800.00,
+        description: "Noix de Saint-Jacques fraîches",
+        image: "public/fresh-oysters-on-ice.jpg",
+        featured: false
+    },
+    {
+        id: 10,
+        name: "Bar de Ligne",
+        category: "poisson",
+        price: 2900.90,
+        description: "Bar de ligne pêché au large",
+        image: "public/WhatsApp Image 2025-11-27 à 21.26.20_7b461d0a.jpg",
+        featured: true
+    },
+    {
+        id: 11,
+        name: "Sole",
+        category: "poisson",
+        price: 3500.50,
+        description: "Sole fraîche de petite pêche",
+        image: "public/WhatsApp Image 2025-11-27 à 21.26.35_a3d34690.jpg",
+        featured: false
+    },
+    {
+        id: 12,
+        name: "Langoustines",
+        category: "crustaces",
+        price: 4200.00,
+        description: "Langoustines vivantes, premium",
+        image: "public/long Image 2025-11-27 à 21.36.10_a7013290.jpg",
+        featured: true
+    }
+];
 
-// Initialize the application
-document.addEventListener("DOMContentLoaded", () => {
-  loadProducts()
-  loadOrders()
-  setupEventListeners()
-  updateCartDisplay()
-})
+// Cart State
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-// Setup event listeners
-function setupEventListeners() {
-  // Contact form
-  document.getElementById("contactForm").addEventListener("submit", handleContactForm)
-
-  // Order form
-  document.getElementById("orderForm").addEventListener("submit", handleOrderForm)
-
-  // Smooth scrolling for navigation
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault()
-      const target = document.querySelector(this.getAttribute("href"))
-      if (target) {
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        })
-      }
-    })
-  })
+// Theme Management
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
 }
 
-// Load products into the grid
-function loadProducts() {
-  const productsGrid = document.getElementById("productsGrid")
-  productsGrid.innerHTML = ""
-
-  products.forEach((product) => {
-    const productCard = createProductCard(product)
-    productsGrid.appendChild(productCard)
-  })
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
 }
 
-// Create product card element
-function createProductCard(product) {
-  const card = document.createElement("div")
-  card.className = "product-card fade-in"
-  card.innerHTML = `
-        <img src="${product.image}" alt="${product.name}" class="product-image">
-        <div class="product-info">
-            <h3 class="product-name">${product.name}</h3>
-            <p class="product-description-card">${product.description}</p>
-            <div class="product-price">${product.price.toFixed(2)}€/kg</div>
-            <button class="add-to-cart" onclick="addToCart(${product.id})">
-                Ajouter au panier
-            </button>
-        </div>
-    `
-  return card
+// Cart Functions
+function updateCartCount() {
+    const count = cart.reduce((total, item) => total + item.quantity, 0);
+    document.getElementById('cartCount').textContent = count;
 }
 
-// Add product to cart
 function addToCart(productId) {
-  const product = products.find((p) => p.id === productId)
-  if (!product) return
-
-  const existingItem = cart.find((item) => item.id === productId)
-
-  if (existingItem) {
-    existingItem.quantity += 1
-  } else {
-    cart.push({
-      ...product,
-      quantity: 1,
-    })
-  }
-
-  updateCartDisplay()
-  showNotification(`${product.name} ajouté au panier!`)
+    const product = products.find(p => p.id === productId);
+    const existingItem = cart.find(item => item.id === productId);
+    
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        cart.push({ ...product, quantity: 1 });
+    }
+    
+    saveCart();
+    updateCartCount();
+    showNotification('Produit ajouté au panier!');
 }
 
-// Update cart display
-function updateCartDisplay() {
-  const cartCount = document.getElementById("cartCount")
-  const cartItems = document.getElementById("cartItems")
-  const cartTotal = document.getElementById("cartTotal")
-
-  // Update cart count
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0)
-  cartCount.textContent = totalItems
-
-  // Update cart items
-  cartItems.innerHTML = ""
-  let total = 0
-
-  cart.forEach((item) => {
-    const itemTotal = item.price * item.quantity
-    total += itemTotal
-
-    const cartItem = document.createElement("div")
-    cartItem.className = "cart-item"
-    cartItem.innerHTML = `
-            <div class="cart-item-info">
-                <h4>${item.name}</h4>
-                <div class="cart-item-price">${itemTotal.toFixed(2)}€</div>
-            </div>
-            <div class="quantity-controls">
-                <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
-                <span>${item.quantity}</span>
-                <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
-            </div>
-        `
-    cartItems.appendChild(cartItem)
-  })
-
-  cartTotal.textContent = `${total.toFixed(2)}€`
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    saveCart();
+    updateCartCount();
+    renderCart();
 }
 
-// Update item quantity in cart
 function updateQuantity(productId, change) {
-  const item = cart.find((item) => item.id === productId)
-  if (!item) return
-
-  item.quantity += change
-
-  if (item.quantity <= 0) {
-    cart = cart.filter((item) => item.id !== productId)
-  }
-
-  updateCartDisplay()
+    const item = cart.find(item => item.id === productId);
+    if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+            removeFromCart(productId);
+        } else {
+            saveCart();
+            renderCart();
+        }
+    }
 }
 
-// Toggle cart sidebar
-function toggleCart() {
-  const cartSidebar = document.getElementById("cartSidebar")
-  cartSidebar.classList.toggle("open")
+function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// Checkout process
-function checkout() {
-  if (cart.length === 0) {
-    showNotification("Votre panier est vide!", "warning")
-    return
-  }
-
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
-  const orderData = {
-    id: Date.now(),
-    items: [...cart],
-    total: total,
-    date: new Date().toLocaleDateString("fr-FR"),
-    status: "pending",
-    customer: "Client Web",
-  }
-
-  orders.unshift(orderData)
-  cart = []
-  updateCartDisplay()
-  loadOrders()
-  toggleCart()
-
-  showNotification("Commande passée avec succès!", "success")
+function calculateTotal() {
+    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
 }
 
-// Handle contact form submission
-function handleContactForm(e) {
-  e.preventDefault()
-
-  const formData = new FormData(e.target)
-  const contactData = {
-    name: formData.get("name"),
-    email: formData.get("email"),
-    phone: formData.get("phone"),
-    message: formData.get("message"),
-  }
-
-  // Simulate form submission
-  console.log("Contact form submitted:", contactData)
-  showNotification("Message envoyé avec succès!", "success")
-  e.target.reset()
-}
-
-// Handle order form submission
-function handleOrderForm(e) {
-  e.preventDefault()
-
-  const formData = new FormData(e.target)
-  const orderData = {
-    id: Date.now(),
-    customerName: formData.get("customerName"),
-    customerEmail: formData.get("customerEmail"),
-    deliveryDate: formData.get("deliveryDate"),
-    notes: formData.get("orderNotes"),
-    date: new Date().toLocaleDateString("fr-FR"),
-    status: "confirmed",
-    items: [],
-    total: 0,
-  }
-
-  orders.unshift(orderData)
-  loadOrders()
-  showNotification("Commande créée avec succès!", "success")
-  e.target.reset()
-}
-
-// Load orders into the list
-function loadOrders() {
-  const ordersList = document.getElementById("ordersList")
-  ordersList.innerHTML = ""
-
-  if (orders.length === 0) {
-    ordersList.innerHTML = "<p>Aucune commande récente</p>"
-    return
-  }
-
-  orders.slice(0, 5).forEach((order) => {
-    const orderItem = document.createElement("div")
-    orderItem.className = "order-item"
-    orderItem.innerHTML = `
-            <div class="order-header">
-                <span class="order-id">#${order.id}</span>
-                <span class="order-status status-${order.status}">${getStatusText(order.status)}</span>
+// Render Functions
+function renderProducts(productsToRender, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    container.innerHTML = productsToRender.map(product => `
+        <div class="product-card">
+            <img src="${product.image}" alt="${product.name}" class="product-image">
+            <div class="product-content">
+                <div class="product-category">${product.category}</div>
+                <h3 class="product-title">${product.name}</h3>
+                <p class="product-description">${product.description}</p>
+                <div class="product-footer">
+                    <span class="product-price">${product.price.toFixed(2)} Fc</span>
+                    <button class="add-to-cart" onclick="addToCart(${product.id})">
+                        Ajouter
+                    </button>
+                </div>
             </div>
-            <div class="order-details">
-                <p><strong>Client:</strong> ${order.customerName || order.customer}</p>
-                <p><strong>Date:</strong> ${order.date}</p>
-                <p><strong>Total:</strong> ${order.total.toFixed(2)}€</p>
-                ${order.notes ? `<p><strong>Notes:</strong> ${order.notes}</p>` : ""}
+        </div>
+    `).join('');
+}
+
+function renderCart() {
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    
+    if (cart.length === 0) {
+        cartItems.innerHTML = '<div class="empty-cart">Votre panier est vide</div>';
+        cartTotal.textContent = '0.00 Fc';
+        return;
+    }
+    
+    cartItems.innerHTML = cart.map(item => `
+        <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+            <div class="cart-item-info">
+                <div class="cart-item-title">${item.name}</div>
+                <div class="cart-item-price">${item.price.toFixed(2)} Fc</div>
+                <div class="cart-item-actions">
+                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                    <span>${item.quantity}</span>
+                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                    <button class="remove-btn" onclick="removeFromCart(${item.id})">Retirer</button>
+                </div>
             </div>
-        `
-    ordersList.appendChild(orderItem)
-  })
+        </div>
+    `).join('');
+    
+    cartTotal.textContent = calculateTotal().toFixed(2) + ' Fc';
 }
 
-// Get status text in French
-function getStatusText(status) {
-  const statusMap = {
-    pending: "En attente",
-    confirmed: "Confirmée",
-    delivered: "Livrée",
-  }
-  return statusMap[status] || status
+// Modal Functions
+function openCart() {
+    renderCart();
+    document.getElementById('cartModal').classList.add('active');
 }
 
-// Show notification
-function showNotification(message, type = "info") {
-  const notification = document.createElement("div")
-  notification.className = `notification notification-${type}`
-  notification.style.cssText = `
+function closeCart() {
+    document.getElementById('cartModal').classList.remove('active');
+}
+
+// Notification
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
         position: fixed;
         top: 100px;
         right: 20px;
-        background: ${type === "success" ? "#28a745" : type === "warning" ? "#ffc107" : "#007bff"};
+        background: var(--accent);
         color: white;
-        padding: 1rem 1.5rem;
-        border-radius: 4px;
-        z-index: 1002;
-        animation: slideIn 0.3s ease-out;
-    `
-  notification.textContent = message
-
-  document.body.appendChild(notification)
-
-  setTimeout(() => {
-    notification.style.animation = "slideOut 0.3s ease-out"
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        z-index: 10000;
+        animation: slideIn 0.3s ease;
+    `;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
     setTimeout(() => {
-      document.body.removeChild(notification)
-    }, 300)
-  }, 3000)
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 2000);
 }
 
-// Scroll to section
-function scrollToSection(sectionId) {
-  const section = document.getElementById(sectionId)
-  if (section) {
-    section.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    })
-  }
+// Filter Products
+function filterProducts(category) {
+    const allProducts = document.getElementById('allProducts');
+    if (!allProducts) return;
+    
+    const filtered = category === 'all' 
+        ? products 
+        : products.filter(p => p.category === category);
+    
+    renderProducts(filtered, 'allProducts');
+    
+    // Update active filter button
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-category') === category) {
+            btn.classList.add('active');
+        }
+    });
 }
 
-// Add CSS animations for notifications
-const style = document.createElement("style")
-style.textContent = `
-    @keyframes slideIn {
-        from {
-            transform: translateX(100%);
-            opacity: 0;
+// Contact Form
+function handleContactForm(e) {
+    e.preventDefault();
+    showNotification('Message envoyé avec succès!');
+    e.target.reset();
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize theme
+    initTheme();
+
+    // Listen for theme changes from other tabs/windows
+    window.addEventListener('storage', (e) => {
+        if (e.key === 'theme') {
+            document.documentElement.setAttribute('data-theme', e.newValue);
         }
-        to {
-            transform: translateX(0);
-            opacity: 1;
+    });
+
+    // Re-sync theme when tab becomes visible (for navigation between pages)
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (savedTheme !== currentTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            }
         }
+    });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
     }
     
-    @keyframes slideOut {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(100%);
-            opacity: 0;
-        }
+    // Cart button
+    const cartButton = document.getElementById('cartButton');
+    if (cartButton) {
+        cartButton.addEventListener('click', openCart);
     }
-`
-document.head.appendChild(style)
+    
+    // Close cart
+    const closeCartBtn = document.getElementById('closeCart');
+    if (closeCartBtn) {
+        closeCartBtn.addEventListener('click', closeCart);
+    }
+    
+    // Close modal on outside click
+    const modal = document.getElementById('cartModal');
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeCart();
+        });
+    }
+    
+    // Render featured products on home page
+    const featuredContainer = document.getElementById('featuredProducts');
+    if (featuredContainer) {
+        const featured = products.filter(p => p.featured);
+        renderProducts(featured, 'featuredProducts');
+    }
+    
+    // Render all products on products page
+    const allProductsContainer = document.getElementById('allProducts');
+    if (allProductsContainer) {
+        renderProducts(products, 'allProducts');
+        
+        // Setup filters
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const category = btn.getAttribute('data-category');
+                filterProducts(category);
+            });
+        });
+    }
+    
+    // Contact form
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', handleContactForm);
+    }
+    
+    // Update cart count
+    updateCartCount();
+});
 
-// Initialize sample orders for demonstration
-orders = [
-  {
-    id: 1001,
-    customer: "Marie Dubois",
-    date: new Date().toLocaleDateString("fr-FR"),
-    status: "confirmed",
-    total: 67.4,
-    items: [
-      { name: "Saumon Atlantique", quantity: 2, price: 24.9 },
-      { name: "Crevettes Roses", quantity: 1, price: 32.0 },
-    ],
-  },
-  {
-    id: 1002,
-    customer: "Jean Martin",
-    date: new Date(Date.now() - 86400000).toLocaleDateString("fr-FR"),
-    status: "delivered",
-    total: 45.0,
-    items: [{ name: "Sole de Bretagne", quantity: 1, price: 45.0 }],
-  },
-]
+// Add CSS animations
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from { transform: translateX(400px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOut {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(400px); opacity: 0; }
+    }
+`;
+document.head.appendChild(style);
