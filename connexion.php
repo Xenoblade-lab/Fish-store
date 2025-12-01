@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>À Propos - Aquamar</title>
+    <title>Connexion - Aquamar</title>
     <link rel="stylesheet" href="styles.css">
     <script>
         // Apply theme immediately to prevent flash
@@ -12,44 +12,43 @@
     </script>
 </head>
 <body>
-   <div class="ocean-background">
-  <video class="ocean-video" autoplay muted loop playsinline preload="auto" poster="public/ocean-poster.jpg">
-    <source src="public/WhatsApp Vidéo 2025-11-29 à 15.34.08_4c83f2d1.mp4" type="video/mp4">
-    <source src="public/WhatsApp Vidéo 2025-11-29 à 15.34.08_4c83f2d1.mp4" type="video/webm">
+    <div class="ocean-background">
+        <video class="ocean-video" autoplay muted loop playsinline preload="auto" poster="public/ocean-poster.jpg">
+            <source src="public/WhatsApp Vidéo 2025-11-29 à 15.34.08_4c83f2d1.mp4" type="video/mp4">
+            <source src="public/WhatsApp Vidéo 2025-11-29 à 15.34.08_4c83f2d1.mp4" type="video/webm">
+        </video>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
 
-  </video>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
 
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
     </div>
 
     <header class="header">
@@ -67,9 +66,8 @@
                 <nav class="nav">
                     <a href="index.html" class="nav-link">Accueil</a>
                     <a href="products.html" class="nav-link">Produits</a>
-                    <a href="about.html" class="nav-link active">À Propos</a>
+                    <a href="about.html" class="nav-link">À Propos</a>
                     <a href="contact.html" class="nav-link">Contact</a>
-                    <a href="connexion.php" class="nav-link">Connexion</a>
                 </nav>
                 <div class="header-actions">
                     <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
@@ -96,48 +94,23 @@
 
     <main class="main">
         <div class="container">
-            <h1 class="page-title">À Propos d'Aquamar</h1>
-            
-            <div class="about-content">
-                <div class="about-section">
-                    <h2>Notre Histoire</h2>
-                    <p>
-                        Fondée en 2024, Aquamar est née de la passion pour la mer et ses trésors. 
-                        Notre mission est de rendre les produits de la mer frais et de qualité accessibles à tous, 
-                        directement depuis votre cuisine.
-                    </p>
-                </div>
+            <h1 class="page-title">Connexion</h1>
 
-                <div class="about-section">
-                    <h2>Nos Valeurs</h2>
-                    <div class="values-grid">
-                        <div class="value-card">
-                            <h3>Fraîcheur</h3>
-                            <p>Nous garantissons des produits ultra-frais, pêchés et livrés en moins de 24h.</p>
-                        </div>
-                        <div class="value-card">
-                            <h3>Durabilité</h3>
-                            <p>Nous privilégions la pêche responsable et le respect des écosystèmes marins.</p>
-                        </div>
-                        <div class="value-card">
-                            <h3>Qualité</h3>
-                            <p>Chaque produit est sélectionné avec soin par nos experts poissonniers.</p>
-                        </div>
-                        <div class="value-card">
-                            <h3>Service</h3>
-                            <p>Votre satisfaction est notre priorité avec un service client disponible 7j/7.</p>
-                        </div>
+            <div class="contact-form" style="max-width: 500px; margin: 0 auto;">
+                <form action="connexion.php" method="post">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
                     </div>
-                </div>
-
-                <div class="about-section">
-                    <h2>Notre Engagement</h2>
-                    <p>
-                        Nous travaillons directement avec des pêcheurs locaux et des aquaculteurs responsables 
-                        pour vous offrir le meilleur de l'océan tout en préservant nos ressources marines pour 
-                        les générations futures.
-                    </p>
-                </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Se connecter</button>
+                </form>
+                <p style="text-align: center; margin-top: 1rem; color: var(--text-secondary);">
+                    Pas encore de compte ? <a href="inscription.php" style="color: var(--accent);">S'inscrire</a>
+                </p>
             </div>
         </div>
     </main>
@@ -183,7 +156,7 @@
             <div class="modal-footer">
                 <div class="cart-total">
                     <span>Total:</span>
-                    <span id="cartTotal">0.00€</span>
+                    <span id="cartTotal">0.00 Fc</span>
                 </div>
                 <button class="btn btn-primary btn-full">Commander</button>
             </div>
