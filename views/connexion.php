@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion - Aquamar</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <script>
         // Apply theme immediately to prevent flash
         const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -97,7 +97,7 @@
             <h1 class="page-title">Connexion</h1>
 
             <div class="contact-form" style="max-width: 500px; margin: 0 auto;">
-                <form action="connexion.php" method="post">
+                <form action="<?= Router\Router::route('login') ?>" method="post">
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" required>
@@ -163,6 +163,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>

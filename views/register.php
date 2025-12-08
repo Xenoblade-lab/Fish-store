@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription - Aquamar</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <script>
         // Apply theme immediately to prevent flash
         const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -97,10 +97,11 @@
             <h1 class="page-title">Inscription</h1>
 
             <div class="contact-form" style="max-width: 500px; margin: 0 auto;">
-                <form action="inscription.php" method="post">
+                <form action="<?= Router\Router::route('register') ?>" method="post">
+                    
                     <div class="form-group">
                         <label for="nom">Nom complet</label>
-                        <input type="text" id="nom" name="nom" required>
+                        <input type="text" id="nom" name="username" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
@@ -117,7 +118,7 @@
                     <button type="submit" class="btn btn-primary btn-full">S'inscrire</button>
                 </form>
                 <p style="text-align: center; margin-top: 1rem; color: var(--text-secondary);">
-                    Déjà un compte ? <a href="connexion.php" style="color: var(--accent);">Se connecter</a>
+                    Déjà un compte ? <a href="<?= Router\Router::route('login') ?>" style="color: var(--accent);">Se connecter</a>
                 </p>
             </div>
         </div>
@@ -171,6 +172,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@ const products = [
         category: "poisson",
         price: 2400.90,
         description: "Saumon frais de l'Atlantique, qualité premium",
-        image: "public/WhatsApp Image 2025-11-27 à 21.26.18_0bcf79af.jpg",
+        image: "assets/images/WhatsApp Image 2025-11-27 à 21.26.18_0bcf79af.jpg",
         featured: true
     },
     {
@@ -15,7 +15,7 @@ const products = [
         category: "poisson",
         price: 3200.50,
         description: "Thon albacore frais, idéal pour tataki",
-        image: "public/WhatsApp Image 2025-11-27 à 21.26.19_9f9a501e.jpg",
+        image: "assets/images/WhatsApp Image 2025-11-27 à 21.26.19_9f9a501e.jpg",
         featured: true
     },
     {
@@ -24,7 +24,7 @@ const products = [
         category: "poisson",
         price: 1800.90,
         description: "Dorade royale de Méditerranée",
-        image: "public/WhatsApp Image 2025-11-27 à 21.26.20_3ea55906.jpg",
+        image: "assets/images/WhatsApp Image 2025-11-27 à 21.26.20_3ea55906.jpg",
         featured: false
     },
     {
@@ -33,7 +33,7 @@ const products = [
         category: "crustaces",
         price: 4500.00,
         description: "Homard breton vivant, 500g",
-        image: "public/crustatt 2025-11-27 à 21.36.10_cf7ad906.jpg",
+        image: "assets/images/crustatt 2025-11-27 à 21.36.10_cf7ad906.jpg",
         featured: true
     },
     {
@@ -42,7 +42,7 @@ const products = [
         category: "crustaces",
         price: 2800.90,
         description: "Crevettes roses sauvages",
-        image: "public/rose 2025-11-27 à 21.36.09_588f2065.jpg",
+        image: "assets/images/rose 2025-11-27 à 21.36.09_588f2065.jpg",
         featured: false
     },
     {
@@ -51,7 +51,7 @@ const products = [
         category: "crustaces",
         price: 2200.50,
         description: "Tourteau cuit, 1kg",
-        image: "public/caraImage 2025-11-27 à 21.36.10_be0e74cf.jpg",
+        image: "assets/images/caraImage 2025-11-27 à 21.36.10_be0e74cf.jpg",
         featured: false
     },
     {
@@ -60,7 +60,7 @@ const products = [
         category: "coquillages",
         price: 1500.90,
         description: "Douzaine d'huîtres spéciales n°3",
-        image: "public/WhatsApp Image 2025-11-27 à 21.36.11_8c547de6.jpg",
+        image: "assets/images/WhatsApp Image 2025-11-27 à 21.36.11_8c547de6.jpg",
         featured: true
     },
     {
@@ -69,7 +69,7 @@ const products = [
         category: "coquillages",
         price: 8000.50,
         description: "Moules de bouchot AOP, 1kg",
-        image: "public/WhatsApp Image 2025-11-27 à 22.21.56_09ac33bb.jpg",
+        image: "assets/images/WhatsApp Image 2025-11-27 à 22.21.56_09ac33bb.jpg",
         featured: false
     },
     {
@@ -78,7 +78,7 @@ const products = [
         category: "coquillages",
         price: 3800.00,
         description: "Noix de Saint-Jacques fraîches",
-        image: "public/fresh-oysters-on-ice.jpg",
+        image: "assets/images/fresh-oysters-on-ice.jpg",
         featured: false
     },
     {
@@ -87,7 +87,7 @@ const products = [
         category: "poisson",
         price: 2900.90,
         description: "Bar de ligne pêché au large",
-        image: "public/WhatsApp Image 2025-11-27 à 21.26.20_7b461d0a.jpg",
+        image: "assets/images/WhatsApp Image 2025-11-27 à 21.26.20_7b461d0a.jpg",
         featured: true
     },
     {
@@ -96,7 +96,7 @@ const products = [
         category: "poisson",
         price: 3500.50,
         description: "Sole fraîche de petite pêche",
-        image: "public/WhatsApp Image 2025-11-27 à 21.26.35_a3d34690.jpg",
+        image: "assets/images/WhatsApp Image 2025-11-27 à 21.26.35_a3d34690.jpg",
         featured: false
     },
     {
@@ -105,7 +105,7 @@ const products = [
         category: "crustaces",
         price: 4200.00,
         description: "Langoustines vivantes, premium",
-        image: "public/long Image 2025-11-27 à 21.36.10_a7013290.jpg",
+        image: "assets/images/long Image 2025-11-27 à 21.36.10_a7013290.jpg",
         featured: true
     }
 ];
