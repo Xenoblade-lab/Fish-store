@@ -15,6 +15,14 @@
      public function all(){
         return $this->connexion->query("SELECT * FROM {$this->table}")->fetchAll(\PDO::FETCH_OBJ);
      }
+     public function edit($id, $datas)
+     {
+      $smt =  $this->connexion->prepare("UPDATE {$this->table} SET category_name = :nom , updated_at = NOW() WHERE id = {$id}");
+      $smt->execute([
+         'nom' => $datas['category']
+      ]);
+
+     }
   }
 
 ?>

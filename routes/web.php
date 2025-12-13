@@ -1,6 +1,5 @@
 <?php
 
-
      Router\Router::get('/', function() {
           App\App::view('index');
      });
@@ -30,9 +29,7 @@
           App\App::view('register');
      });
 
-     Router\Router::get('/admin', function() {
-          App\App::view('admin'.DIRECTORY_SEPARATOR.'index');
-     });
+     Router\Router::get('/admin',[\Controllers\AdminController::class,'index']);
 
 
      Router\Router::post('/register', function() {
@@ -50,6 +47,11 @@
           $auth->logout();
      });
 
+     Router\Router::get('/test',function(){
+          $admin = new \Controllers\AdminController();
+          $admin->stats();
+     });
+
      Router\Router::post('/category/create',function(){
           $category = new  Controllers\CategoriesController();
           $category->create($_POST);
@@ -57,7 +59,33 @@
 
      Router\Router::post('/product/create',function(){
           $product = new  Controllers\ProductsController();
-          $product->create($_POST);
+          $product->create($_POST,$_FILES);
      });
-     
+
+     Router\Router::post('/users/[i:id]/delete',function($id){
+          $user = new \Models\UserModel();
+          $user->delete($id['id']);
+     });
+     Router\Router::post('/products/[i:id]/delete',function($id){
+          $product = new \Models\Products();
+          $product->delete($id['id']);
+     });
+
+     Router\Router::post('/category/[i:id]/delete',function($id){
+          $category = new \Models\Categories();
+          $category->delete($id['id']);
+     });
+
+     Router\Router::post('/category/[i:id]/update',function($id){
+          $category = new \Models\Categories();
+          $category->edit($id['id'],$_POST);
+     });
+
+     Router\Router::get('/category/[i:id]/edit',function($id){
+       echo '<form action="'. Router\Router::route('category/'.$id['id'].'/update') .'" method="post">
+      <label for="#">Catagorie</label>
+      <input type="text" name="category">
+      <button type="submit">Ajouter</button>
+     </form>';
+     });
 ?>

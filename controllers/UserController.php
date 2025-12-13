@@ -1,7 +1,12 @@
 <?php 
   namespace Controllers;
   class UserController
-  {
+  {   
+    
+      public function index()
+      {
+        
+      }
       public function login($data){
   
         $user = new \Models\UserModel();

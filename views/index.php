@@ -19,8 +19,8 @@
     <!-- Ocean Background -->
 <div class="ocean-background">
   <video class="ocean-video" autoplay muted loop playsinline preload="auto" poster="public/ocean-poster.jpg">
-    <source src="public/WhatsApp Vidéo 2025-11-29 à 15.34.08_4c83f2d1.mp4" type="video/mp4">
-    <source src="public/WhatsApp Vidéo 2025-11-29 à 15.34.08_4c83f2d1.mp4" type="video/webm">
+    <source src="./assets/videos/WhatsApp Vidéo 2025-11-29 à 15.34.08_4c83f2d1.mp4" type="video/mp4">
+    <source src="./assets/videos/3.mp4" type="video/webm">
 
   </video>
 
